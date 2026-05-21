@@ -9,9 +9,7 @@ import streamlit as st
 import plotly.express as px
 from pathlib import Path
 
-# ==========================================================
 # Page Configuration
-# ==========================================================
 
 st.set_page_config(
     page_title="Retail Sales & Inventory Dashboard",
@@ -37,9 +35,7 @@ def load_data():
 
 df = load_data()
 
-# ==========================================================
 # Sidebar Filters
-# ==========================================================
 
 st.sidebar.title("Dashboard Filters")
 
@@ -72,9 +68,7 @@ selected_locations = st.sidebar.multiselect(
     default=locations
 )
 
-# ==========================================================
 # Apply Filters
-# ==========================================================
 
 filtered_df = df.copy()
 
@@ -91,9 +85,7 @@ filtered_df = filtered_df[
     (filtered_df["store_location"].isin(selected_locations))
 ]
 
-# ==========================================================
 # Dashboard Title
-# ==========================================================
 
 st.title("Retail Sales & Inventory Analytics Dashboard")
 
@@ -110,9 +102,7 @@ st.write(
 
 st.divider()
 
-# ==========================================================
 # KPI Metrics
-# ==========================================================
 
 total_revenue = filtered_df["revenue"].sum()
 
@@ -151,9 +141,7 @@ col4.metric(
 
 st.divider()
 
-# ==========================================================
 # Revenue Trend
-# ==========================================================
 
 st.subheader("Revenue Trend Over Time")
 
@@ -176,9 +164,7 @@ st.plotly_chart(
     width="stretch"
 )
 
-# ==========================================================
 # Revenue by Category and Store
-# ==========================================================
 
 left_col, right_col = st.columns(2)
 
